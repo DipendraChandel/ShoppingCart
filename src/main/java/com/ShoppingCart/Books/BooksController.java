@@ -15,32 +15,32 @@ public class BooksController {
 	@Autowired
 	BooksService booksService;
 	
-	//returns all the books //GET
-	@RequestMapping(value ="/Books", method = RequestMethod.GET)
+	//returns all the books -> GET
+	@RequestMapping(value ="/books", method = RequestMethod.GET)
 	public List<Books> getAllBooks(){
 		return booksService.getAllTheBooks();
 	}
 	
-	//returns single book //GET
-	@RequestMapping(value ="/Books/{id}", method = RequestMethod.GET)
+	//returns single book -> GET
+	@RequestMapping(value ="/books/{id}", method = RequestMethod.GET)
 	public Books getBook(@PathVariable int id) {
 		return booksService.getBook(id);
 	}
 	
-	//saving the book //POST
-	@RequestMapping(value ="/Books/save", method = RequestMethod.POST)
+	//saving the book -> POST
+	@RequestMapping(value ="/books/save", method = RequestMethod.POST)
 	public void saveBook(@RequestBody Books books) {
 		booksService.saveBook(books);
 	}
 	
-	//updating the player // PUT
-	@RequestMapping(value = "/Books/update", method = RequestMethod.PUT)
+	//updating the player -> PUT
+	@RequestMapping(value = "/books/update", method = RequestMethod.PUT)
 	public void updateBook(@RequestBody Books books) {
 		booksService.updateBook(books);
 	}
 	
-	//Deleting the book
-	@RequestMapping(value = "/Books/delete/{booksId}", method = RequestMethod.DELETE)
+	//Deleting the book ->DELETE
+	@RequestMapping(value = "/books/delete/{booksId}", method = RequestMethod.DELETE)
 	public void deleteBook(@PathVariable int booksId) {
 		booksService.deleteBook(booksId);
 	}

@@ -16,6 +16,11 @@ public class Books {
 	private String author;
 	
 	
+	public Books() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	private double price;
 
 	public int getBooksId() {

@@ -14,18 +14,20 @@ public class BooksService {
 	private BooksRepository booksRepository;
 	
 	List<Books> books= new ArrayList<>();
-	
-	BooksService(){
-		System.out.println("Books Service");
-		books.add(new Books(101, "Let us C", "Yashavant P. Kanetkar", 200));
-		books.add(new Books(102, "SQL The Complete Reference", "James Groff", 667));
-		books.add(new Books(103, "Thinking In Java", "Bruce Eckel", 300));
-		books.add(new Books(104, "Computer Networking", "James F. Kurose", 250));
-	}
+
+//	fOr testing purpose
+// 	BooksService(){
+// 		System.out.println("Books Service");
+// 		books.add(new Books(101, "Let us C", "Yashavant P. Kanetkar", 200));
+// 		books.add(new Books(102, "SQL The Complete Reference", "James Groff", 667));
+// 		books.add(new Books(103, "Thinking In Java", "Bruce Eckel", 300));
+// 		books.add(new Books(104, "Computer Networking", "James F. Kurose", 250));
+// 	}
 	
 	//Returns All the Books
 	public List<Books> getAllTheBooks(){
 		
+		//using CrudRepository
 		List<Books> bookList = new ArrayList<>();
 		booksRepository.findAll().forEach(bookList::add);
 		return bookList;
@@ -33,7 +35,7 @@ public class BooksService {
 	
 	//Returns Single Book
 	public Books getBook(int Id) {
-		
+		//un-comment if not using Crudrepo
 //		for(Books b: books) {
 //			if(b.getBooksId()==Id) {
 //				return b;
@@ -41,6 +43,7 @@ public class BooksService {
 //		}
 //		return null;
 		
+		//using CrudRepository
 		Optional<Books> bookById = booksRepository.findById(Id);
 		if(bookById.isPresent()) {
 			return bookById.get();
@@ -50,20 +53,24 @@ public class BooksService {
 	
 	//Save the book
 	public void saveBook(Books books) {
+		//un-comment if not using Crudrepo
 		//this.books.add(books);
+		
+		//using CrudRepository
 		booksRepository.save(books);
 	} 
 	
 //	 *** for postman ***
 //	{
-//        "booksId": 101,
-//        "bookName": "Let us C",
-//        "author": "Yashavant P. Kanetkar",
-//        "price": 200.0
+//        "booksId": ,
+//        "bookName": "",
+//        "author": "",
+//        "price": 0.0
 //    }
 	
 	//update the book
 	public void updateBook(Books updatebooks) {
+		//un-comment if not using Crudrepo
 //		for(Books b : books) {
 //			if(b.getBooksId()==updatebooks.getBooksId()) {
 //				b.setBookName(updatebooks.getBookName());
@@ -72,6 +79,7 @@ public class BooksService {
 //			}
 //		}
 		
+		//using CrudRepo
 		booksRepository.save(updatebooks);
 	}
 	
